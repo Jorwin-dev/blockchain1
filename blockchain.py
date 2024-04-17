@@ -230,3 +230,38 @@ def full_chain():
 
 if __name__ == '_main_':
     app.run(host='0.0.0.0', port=5000)
+
+# Registration of Two endpoints to the API
+@app.route('/nodes/register', methods =['POST'])
+def register_nodes():
+    values = request.get_json()
+
+    nodes = request.get('nodes')
+    if nodes is None:
+        return "Error: Please supply a valid list of nodes", 400
+    
+    for node in nodes:
+        Blockchain.register_node(node)
+
+    response = {
+        'message': 'New nodes have been added',
+        'total_nodes': list(Blockchain.nodes),
+    }
+    return jsonify(response), 201
+
+@app.route('/nodes/resolve', methods=['GET'])
+def consensus():
+    replaced = Blockchain.resolve_conflicts()
+
+    if replaced:
+        response = {
+            'message': 'The chain was replaced',
+            'new_chain': Blockchain.chain
+        }
+    else:
+        response = {
+            'message': 'The chain is authoritative',
+            'chain': Blockchain.chain
+        }
+
+    return jsonify(response), 200
