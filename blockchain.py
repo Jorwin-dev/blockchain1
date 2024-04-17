@@ -13,7 +13,7 @@ class Blockchain(object):
         self.current_transactions = []
         self.nodes = set()
 
-        # create the genesis block
+        # Create the genesis block
         self.new_block(previous_hash=1, proof=100)
 
     def new_block(self, proof, previous_hash=None):
@@ -31,7 +31,7 @@ class Blockchain(object):
             'proof': proof,
             'previous_hash': previous_hash or self.hash(self.chain[-1]),
         }
-        # reset the current list of transactions
+        # Reset the current list of transactions
         self.current_transactions = []
 
         self.chain.append(block)
@@ -56,7 +56,7 @@ class Blockchain(object):
 
     @property
     def last_block(self):
-        # returns the last Block in the chain pass
+        # Returns the last Block in the chain pass
         return self.chain[-1]
 
     @staticmethod
@@ -67,7 +67,7 @@ class Blockchain(object):
         :return: <str>
         """
 
-        # make sure that Dictionary is ordered
+        # Make sure that Dictionary is ordered
         block_string = json.dumps(block, sort_keys=True).encode()
         return hashlib.sha256(block_string).hexdigest()
     
