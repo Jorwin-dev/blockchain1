@@ -1,4 +1,5 @@
 # blockchain1
+Blockchain Network
 
 ## Overview
 This project is a **Python-based blockchain network** that implements a **proof-of-work (PoW) consensus mechanism**. It allows nodes to mine blocks, create transactions, and maintain a distributed ledger. The blockchain is built using **Flask** for the API, **SHA-256 cryptographic hashing**, and includes **basic networking functionality** for decentralized consensus.
