@@ -104,9 +104,6 @@ class Blockchain:
 - Add **smart contract functionality** for automation.
 - Enhance security with **asymmetric cryptography**.
 
-## License
-This project is licensed under the MIT License.
-
 ## Contact
 For inquiries or collaborations, reach out via [LinkedIn](https://www.linkedin.com/in/jorwinreyes/) or [GitHub](https://github.com/Jorwin-dev).
 
